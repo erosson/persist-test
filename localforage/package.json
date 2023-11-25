@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "yarn serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "dependencies": {
+    "localforage": "^1.10.0"
+  }
+}

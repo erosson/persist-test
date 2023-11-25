@@ -1,0 +1,29 @@
+I'd like a good persistence solution for single-player games.
+
+* not coupled to any framework or ui
+
+* offline-first: play with poor or no internet (on the subway/on a plane). No worse than localstorage
+  * actions aren't server-validated; cheating is tolerated. this is not a solution for online games
+
+* easy for devs to integrate in multiple games: usable for quick demo projects, not just high-effort swarmsim-likes
+  * ideally, devs can reuse the same online-sync server across multiple games
+
+* at least one of the following:
+
+  * online-sync: optionally play on multiple devices, using an account + periodic online sync
+    * "optional" is key: signup is done later, not on new user start. all users start as anonymous
+    * not interested in supporting multiplayer or multiboxing. zero(ish) conflict resolution
+  
+  * persistent offline data: how best to store data "permanently" on the client?
+    * swarmsim had multistorage to work around the flaws of every client storage backend. how best to do this in 2023? (localforage?)
+    * failing that, at least detect when things are likely to be evicted, so we can debug and advise the user accordingly.
+    * `navigator.storage.persist()` and `navigator.storage.persisted()`?
+
+  * import/export strings
+
+---
+
+I think my best answer might just be ad-hoc localforage/localstorage + navigator.storage.persist().
+We can avoid the horrors of swarmsim-2015 data loss by prompting the user to bookmark/install, and browsers behave differently now too.
+Online sync is too complex for low-effort demos, and also not that important.
+Online sync demands a user account/auth system, which is unavoidably complex!

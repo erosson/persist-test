@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "yarn serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "dependencies": {
+    "pouchdb": "^8.0.1"
+  }
+}
